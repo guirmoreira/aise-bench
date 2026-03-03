@@ -1,0 +1,12 @@
+[
+  {
+    "name": "fibonacci_memo",
+    "prompt": "Função fib(n) com memoização para performance.",
+    "test": "assert fib(50) == 12586269025"
+  },
+  {
+    "name": "validador_email",
+    "prompt": "Função que valida email usando Regex.",
+    "test": "assert validate('teste@gmail.com') == True\nassert validate('invalid-email') == False"
+  }
+]

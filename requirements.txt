@@ -1,0 +1,8 @@
+litellm          # Abstração de LLMs (OpenAI, Anthropic, Ollama)
+langgraph        # Orquestração agêntica (State Machines)
+langsmith        # Observabilidade e Tracing (Obrigatório para pesquisa)
+docker           # Sandbox de execução
+pandas           # Manipulação de resultados/datasets
+python-dotenv    # Gestão de variáveis de ambiente
+matplotlib       # Visualização de dados
+seaborn          # Visualização de dados estatísticos
