@@ -4,11 +4,23 @@ Este repositório contém uma **bancada de experimentos** desenvolvida para a pe
 
 ## 🚀 Visão Geral da Arquitetura
 
-Diferente de abordagens *Zero-Shot*, este framework implementa um **Grafo de Estados Agêntico** utilizando `LangGraph`. O fluxo simula o comportamento humano:
+Diferente de abordagens *Zero-Shot*, este framework implementa um **Grafo de Estados Agêntico** utilizando `LangGraph` com **LiteLLM** como backend de inferência unificado. O fluxo simula o comportamento humano:
 
-1. **Geração:** O LLM propõe uma solução inicial.
+1. **Geração:** O LLM propõe uma solução inicial usando o agente `python-generator`.
 2. **Validação (Oráculo):** O código é executado em um **Sandbox Docker** isolado.
-3. **Refatoração:** Se o teste falhar, o agente recebe o erro (Traceback) e tenta corrigir o código.
+3. **Refatoração:** Se o teste falhar, o agente `python-debugger` recebe o erro (Traceback) e tenta corrigir o código.
+
+### Por que LiteLLM?
+
+- ✅ **Interface unificada** para múltiplos provedores (OpenAI, Anthropic, modelos locais)
+- ✅ **Gerenciamento eficiente de contexto** - evita estouro de tokens
+- ✅ **Compatibilidade** com APIs OpenAI locais (LM Studio, Ollama, vLLM)
+- ✅ **Métricas de tokens** precisas para análise de custo
+
+### Agentes Customizados
+
+- **python-generator**: Especializado em gerar código Python limpo e correto
+- **python-debugger**: Especializado em análise de erros e correção de bugs
 
 ### Métricas de Pesquisa
 

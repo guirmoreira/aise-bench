@@ -1,8 +1,11 @@
-litellm          # Abstração de LLMs (OpenAI, Anthropic, Ollama)
-langgraph        # Orquestração agêntica (State Machines)
-langsmith        # Observabilidade e Tracing (Obrigatório para pesquisa)
-docker           # Sandbox de execução
-pandas           # Manipulação de resultados/datasets
-python-dotenv    # Gestão de variáveis de ambiente
-matplotlib       # Visualização de dados
-seaborn          # Visualização de dados estatísticos
+# filepath: c:\Users\guilherme.moreira\git\aise-bench\requirements.txt
+litellm>=1.0            # LiteLLM — interface unificada para LLMs (OpenAI, local, etc)
+pydantic>=2.0           # Validação de dados e schemas
+langgraph               # Orquestração agêntica (State Machines)
+langsmith               # Observabilidade e Tracing (Obrigatório para pesquisa)
+docker                  # Sandbox de execução
+pandas                  # Manipulação de resultados/datasets
+python-dotenv           # Gestão de variáveis de ambiente
+matplotlib              # Visualização de dados
+seaborn                 # Visualização de dados estatísticos
+openai>=1.0             # Cliente OpenAI (usado por litellm)

@@ -1,49 +1,76 @@
 import json
 import os
+import time
 
 import pandas as pd
 from dotenv import load_dotenv
-from langsmith import traceable
 
 from core.agent import agent_executor
+from core.logging import ExperimentLogger
+
+from exp_config import MODEL
 
 load_dotenv()
 
-# Ativa o LangSmith para logging científico
-os.environ["LANGSMITH_TRACING"] = "true"
-os.environ["LANGSMITH_PROJECT"] = "Mestrado"
+DATASET = "data/dataset.json"
 
 
-@traceable
 def run_bench():
-    # Exemplo de Dataset: histórias de usuário + oráculos (testes)
-    with open("data/dataset.json") as f:
+    log = ExperimentLogger()
+
+    with open(DATASET, encoding="utf-8") as f:
         tasks = json.load(f)
+
+    log.run_start(model=MODEL, dataset=DATASET)
 
     results = []
     for task in tasks:
-        print(f"🚀 Testando: {task['name']}")
+        log.task_start(task=task["name"], requirement=task["prompt"])
 
-        # Executa o grafo agêntico
+        task_start = time.time()
         final_state = agent_executor.invoke({
             "requirement": task["prompt"],
             "oracle": task["test"],
+            "task": task["name"],
             "attempts": 0,
-            "is_passing": False
+            "is_passing": False,
+            "logger": log,
+            "code": "",
+            "errors": "",
+            "tokens_input": 0,
+            "tokens_output": 0,
+            "task_start_time": 0.0,
         })
+        task_elapsed = time.time() - task_start
+
+        passed = final_state["is_passing"]
+        total_attempts = final_state["attempts"]
+        tokens_input = final_state.get("tokens_input", 0)
+        tokens_output = final_state.get("tokens_output", 0)
+
+        log.task_end(
+            task=task["name"],
+            passed=passed,
+            total_attempts=total_attempts,
+            elapsed_s=task_elapsed,
+            tokens_input=tokens_input,
+            tokens_output=tokens_output,
+        )
 
         results.append({
             "task": task["name"],
-            "passed": final_state["is_passing"],
-            "total_attempts": final_state["attempts"]
+            "passed": passed,
+            "total_attempts": total_attempts,
+            "elapsed_s": task_elapsed,
+            "tokens_input": tokens_input,
+            "tokens_output": tokens_output,
         })
 
-    # Exporta para CSV para análise estatística no seu artigo/dissertação
-    df = pd.DataFrame(results)
-    df.to_csv("resultados_experimento.csv", index=False)
-    print("✅ Experimento concluído. Resultados salvos.")
+    passed_count = sum(1 for r in results if r["passed"])
+    log.run_end(total_tasks=len(results), passed=passed_count)
+
+    print(f"Full log: logs/{log.run_id}.log")
 
 
 if __name__ == "__main__":
-    run_bench()if __name__ == "__main__":
     run_bench()

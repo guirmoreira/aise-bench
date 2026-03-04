@@ -1,3 +1,3 @@
 task,passed,total_attempts
-fibonacci_memo,False,3
-validador_email,False,3
+fibonacci_memo,True,1
+validador_email,True,1

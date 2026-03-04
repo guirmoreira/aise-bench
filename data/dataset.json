@@ -1,12 +1,86 @@
 [
   {
     "name": "fibonacci_memo",
-    "prompt": "Função fib(n) com memoização para performance.",
+    "prompt": "Função `fib(n)` com memoização para performance.",
     "test": "assert fib(50) == 12586269025"
-  },
+  },  
   {
     "name": "validador_email",
-    "prompt": "Função que valida email usando Regex.",
+    "prompt": "Função `validate(email)` que valida email usando Regex.",
     "test": "assert validate('teste@gmail.com') == True\nassert validate('invalid-email') == False"
+  },
+  {
+    "name": "fatorial_recursivo",
+    "prompt": "Função `factorial(n)` que calcula o fatorial de n de forma recursiva.",
+    "test": "assert factorial(0) == 1\nassert factorial(1) == 1\nassert factorial(5) == 120\nassert factorial(10) == 3628800"
+  },
+  {
+    "name": "inverter_string",
+    "prompt": "Função `reverse_string(s)` que retorna a string invertida.",
+    "test": "assert reverse_string('hello') == 'olleh'\nassert reverse_string('Python') == 'nohtyP'\nassert reverse_string('') == ''"
+  },
+  {
+    "name": "palindromo",
+    "prompt": "Função `is_palindrome(s)` que retorna True se a string for um palíndromo (ignorando maiúsculas e espaços).",
+    "test": "assert is_palindrome('racecar') == True\nassert is_palindrome('A man a plan a canal Panama') == True\nassert is_palindrome('hello') == False"
+  },
+  {
+    "name": "dois_soma",
+    "prompt": "Função `two_sum(nums, target)` que retorna os índices dos dois números numa lista que somam ao target.",
+    "test": "assert two_sum([2, 7, 11, 15], 9) == [0, 1]\nassert two_sum([3, 2, 4], 6) == [1, 2]\nassert two_sum([3, 3], 6) == [0, 1]"
+  },
+  {
+    "name": "contar_palavras",
+    "prompt": "Função `word_count(text)` que retorna um dicionário com a frequência de cada palavra no texto (case-insensitive).",
+    "test": "assert word_count('the cat sat on the mat') == {'the': 2, 'cat': 1, 'sat': 1, 'on': 1, 'mat': 1}\nassert word_count('Hello hello HELLO') == {'hello': 3}"
+  },
+  {
+    "name": "numero_primo",
+    "prompt": "Função `is_prime(n)` que retorna True se n for um número primo.",
+    "test": "assert is_prime(2) == True\nassert is_prime(17) == True\nassert is_prime(1) == False\nassert is_prime(4) == False\nassert is_prime(97) == True"
+  },
+  {
+    "name": "achatar_lista",
+    "prompt": "Função `flatten(lst)` que recebe uma lista aninhada de qualquer profundidade e retorna uma lista plana.",
+    "test": "assert flatten([1, [2, 3], [4, [5, 6]]]) == [1, 2, 3, 4, 5, 6]\nassert flatten([[1, [2]], [3, [4, [5]]]]) == [1, 2, 3, 4, 5]\nassert flatten([1, 2, 3]) == [1, 2, 3]"
+  },  {
+    "name": "caesar_cipher",
+    "prompt": "Função `caesar_cipher(text, shift)` que aplica a cifra de César ao texto, deslocando cada letra por `shift` posições (preserva maiúsculas/minúsculas e ignora não-letras).",
+    "test": "assert caesar_cipher('Hello, World!', 3) == 'Khoor, Zruog!'\nassert caesar_cipher('Khoor, Zruog!', -3) == 'Hello, World!'\nassert caesar_cipher('abc', 26) == 'abc'"
+  },
+  {
+    "name": "lru_cache_manual",
+    "prompt": "Implemente a classe `LRUCache(capacity)` que simula um cache LRU (Least Recently Used). Métodos: `get(key)` retorna o valor da chave ou -1 se não existir; `put(key, value)` insere ou atualiza o par (key, value) — se o cache atingir a capacidade, o item menos recentemente usado deve ser removido. Toda operação `get` e `put` deve contar como 'uso recente'. Não use `functools.lru_cache`.",
+    "test": "cache = LRUCache(2)\ncache.put(1, 1)\ncache.put(2, 2)\nassert cache.get(1) == 1\ncache.put(3, 3)\nassert cache.get(2) == -1\ncache.put(4, 4)\nassert cache.get(1) == -1\nassert cache.get(3) == 3\nassert cache.get(4) == 4\ncache2 = LRUCache(1)\ncache2.put(2, 1)\nassert cache2.get(2) == 1\ncache2.put(3, 2)\nassert cache2.get(2) == -1\nassert cache2.get(3) == 2"
+  },
+  {
+    "name": "regex_engine",
+    "prompt": "Implemente a função `regex_match(pattern, text)` que verifica se `text` casa com `pattern` — sem usar o módulo `re`. O padrão suporta apenas: `.` (qualquer caractere), `*` (zero ou mais do anterior), `+` (um ou mais do anterior) e `?` (zero ou um do anterior). O padrão deve casar com o texto INTEIRO (anchored match).",
+    "test": "assert regex_match('a', 'a') == True\nassert regex_match('a', 'b') == False\nassert regex_match('a.c', 'abc') == True\nassert regex_match('a.c', 'ac') == False\nassert regex_match('a*b', 'b') == True\nassert regex_match('a*b', 'aaab') == True\nassert regex_match('a*b', 'aac') == False\nassert regex_match('a+b', 'b') == False\nassert regex_match('a+b', 'ab') == True\nassert regex_match('a+b', 'aaab') == True\nassert regex_match('a?b', 'b') == True\nassert regex_match('a?b', 'ab') == True\nassert regex_match('a?b', 'aab') == False\nassert regex_match('.*', '') == True\nassert regex_match('.*', 'anything') == True\nassert regex_match('a.*b', 'aXXXb') == True\nassert regex_match('a.*b', 'aXXXc') == False"
+  },
+  {
+    "name": "avaliar_expressao",
+    "prompt": "Implemente a função `evaluate(expr)` que avalia uma expressão matemática em string contendo inteiros, operadores `+`, `-`, `*`, `/` (divisão inteira truncada em direção a zero) e parênteses. Deve respeitar a precedência de operadores e não usar `eval()`. Espaços podem aparecer em qualquer lugar.",
+    "test": "assert evaluate('3 + 2 * 2') == 7\nassert evaluate(' 3/2 ') == 1\nassert evaluate(' 3+5 / 2 ') == 5\nassert evaluate('(1+(4+5+2)-3)+(6+8)') == 23\nassert evaluate('2*(5+5*2)/3+(6/2+8)') == 21\nassert evaluate('100 * 2 + 12') == 212\nassert evaluate('100 * (2 + 12)') == 1400\nassert evaluate('100 * (2 + 12) / 14') == 100\nassert evaluate('14-3/2') == 13\nassert evaluate('-2+1') == -1\nassert evaluate('-(3+2)') == -5"
+  },
+  {
+    "name": "serialize_deserialize_bt",
+    "prompt": "Implemente as funções `serialize(root)` e `deserialize(data)` para uma árvore binária. O nó é representado pela classe `TreeNode(val, left=None, right=None)`. A serialização deve ser capaz de reconstruir a árvore idêntica. Não use `eval()` ou `pickle`.",
+    "test": "class TreeNode:\n    def __init__(self, val, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n    def __eq__(self, other):\n        if other is None: return False\n        return self.val == other.val and self.left == other.left and self.right == other.right\n\nroot1 = TreeNode(1, TreeNode(2), TreeNode(3, TreeNode(4), TreeNode(5)))\nassert deserialize(serialize(root1)) == root1\n\nroot2 = None\nassert deserialize(serialize(root2)) == root2\n\nroot3 = TreeNode(1)\nassert deserialize(serialize(root3)) == root3\n\nroot4 = TreeNode(1, TreeNode(2, TreeNode(3, TreeNode(4))))\nassert deserialize(serialize(root4)) == root4\n\nroot5 = TreeNode(0, None, TreeNode(-1, None, TreeNode(-2)))\nassert deserialize(serialize(root5)) == root5"
+  },
+  {
+    "name": "word_break",
+    "prompt": "Implemente a função `word_break(s, word_dict)` que retorna `True` se a string `s` puder ser segmentada em uma sequência de uma ou mais palavras presentes em `word_dict` (lista de strings). Cada palavra do dicionário pode ser reutilizada.",
+    "test": "assert word_break('leetcode', ['leet', 'code']) == True\nassert word_break('applepenapple', ['apple', 'pen']) == True\nassert word_break('catsandog', ['cats', 'dog', 'sand', 'and', 'cat']) == False\nassert word_break('', ['a', 'b']) == True\nassert word_break('a', ['a']) == True\nassert word_break('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab', ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa', 'aaaaaaa', 'aaaaaaaa', 'aaaaaaaaa', 'aaaaaaaaaa']) == False\nassert word_break('cars', ['car', 'ca', 'rs']) == True"
+  },
+  {
+    "name": "trapping_rain_water",
+    "prompt": "Implemente a função `trap(height)` que, dado um array de inteiros não-negativos `height` representando a elevação de cada barra em um gráfico de barras de largura 1, calcula quanta água pode ser acumulada após uma chuva.",
+    "test": "assert trap([0,1,0,2,1,0,1,3,2,1,2,1]) == 6\nassert trap([4,2,0,3,2,5]) == 9\nassert trap([]) == 0\nassert trap([3]) == 0\nassert trap([3,0,3]) == 3\nassert trap([1,2,3,4,5]) == 0\nassert trap([5,4,3,2,1]) == 0\nassert trap([3,0,0,0,3]) == 9\nassert trap([0,0,0]) == 0\nassert trap([2,0,2]) == 2"
+  },
+  {
+    "name": "sudoku_solver",
+    "prompt": "Implemente a função `solve_sudoku(board)` que resolve um sudoku. O tabuleiro é uma lista de 9 listas de 9 elementos, onde cada elemento é um inteiro de 1-9 ou 0 (vazio). A função deve modificar o tabuleiro **in-place** e garantir que a solução seja válida (sem repetições em linhas, colunas e blocos 3x3). O input sempre terá solução única.",
+    "test": "import copy\n\nb1 = [\n    [5,3,0,0,7,0,0,0,0],\n    [6,0,0,1,9,5,0,0,0],\n    [0,9,8,0,0,0,0,6,0],\n    [8,0,0,0,6,0,0,0,3],\n    [4,0,0,8,0,3,0,0,1],\n    [7,0,0,0,2,0,0,0,6],\n    [0,6,0,0,0,0,2,8,0],\n    [0,0,0,4,1,9,0,0,5],\n    [0,0,0,0,8,0,0,7,9]\n]\nexpected1 = [\n    [5,3,4,6,7,8,9,1,2],\n    [6,7,2,1,9,5,3,4,8],\n    [1,9,8,3,4,2,5,6,7],\n    [8,5,9,7,6,1,4,2,3],\n    [4,2,6,8,5,3,7,9,1],\n    [7,1,3,9,2,4,8,5,6],\n    [9,6,1,5,3,7,2,8,4],\n    [2,8,7,4,1,9,6,3,5],\n    [3,4,5,2,8,6,1,7,9]\n]\nsolve_sudoku(b1)\nassert b1 == expected1\n\nb2 = [\n    [0,0,0,2,6,0,7,0,1],\n    [6,8,0,0,7,0,0,9,0],\n    [1,9,0,0,0,4,5,0,0],\n    [8,2,0,1,0,0,0,4,0],\n    [0,0,4,6,0,2,9,0,0],\n    [0,5,0,0,0,3,0,2,8],\n    [0,0,9,3,0,0,0,7,4],\n    [0,4,0,0,5,0,0,3,6],\n    [7,0,3,0,1,8,0,0,0]\n]\nexpected2 = [\n    [4,3,5,2,6,9,7,8,1],\n    [6,8,2,5,7,1,4,9,3],\n    [1,9,7,8,3,4,5,6,2],\n    [8,2,6,1,9,5,3,4,7],\n    [3,7,4,6,8,2,9,1,5],\n    [9,5,1,7,4,3,6,2,8],\n    [5,1,9,3,2,6,8,7,4],\n    [2,4,8,9,5,7,1,3,6],\n    [7,6,3,4,1,8,2,5,9]\n]\nsolve_sudoku(b2)\nassert b2 == expected2"
   }
 ]

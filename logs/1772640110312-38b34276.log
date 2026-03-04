@@ -1,0 +1,163 @@
+2026-03-04 16:01:50:0315 [RUN_START] {{"run_id": "1772640110312-38b34276", "model": "qwen/qwen3-coder-30b", "dataset": "data/dataset.json"}} Experiment started — model=qwen/qwen3-coder-30b dataset=data/dataset.json
+
+2026-03-04 16:01:50:0315 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "fibonacci_memo"}} Função `fib(n)` com memoização para performance.
+
+2026-03-04 16:01:55:0716 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "fibonacci_memo", "attempt": 1, "tokens_input": 144, "tokens_output": 59, "tokens_total": 203}} <code>
+    def fib(n, memo={}):
+        if n in memo:
+            return memo[n]
+        if n <= 1:
+            return n
+        memo[n] = fib(n-1, memo) + fib(n-2, memo)
+        return memo[n]
+    </code>
+
+2026-03-04 16:01:56:0330 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "fibonacci_memo", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:01:56:0336 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "fibonacci_memo", "passed": true, "total_attempts": 1, "elapsed_s": 6.02, "tokens_input": 144, "tokens_output": 59, "tokens_total": 203}} passed=True total_attempts=1 elapsed_s=6.02 tokens_total=203
+
+2026-03-04 16:01:56:0336 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "validador_email"}} Função `validate(email)` que valida email usando Regex.
+
+2026-03-04 16:01:59:0336 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "validador_email", "attempt": 1, "tokens_input": 144, "tokens_output": 58, "tokens_total": 202}} <code>
+    import re
+    
+    def validate(email):
+        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        return re.match(pattern, email) is not None
+    </code>
+
+2026-03-04 16:01:59:0824 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "validador_email", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:01:59:0826 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "validador_email", "passed": true, "total_attempts": 1, "elapsed_s": 3.49, "tokens_input": 144, "tokens_output": 58, "tokens_total": 202}} passed=True total_attempts=1 elapsed_s=3.49 tokens_total=202
+
+2026-03-04 16:01:59:0826 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "fatorial_recursivo"}} Função `factorial(n)` que calcula o fatorial de n de forma recursiva.
+
+2026-03-04 16:02:02:0640 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "fatorial_recursivo", "attempt": 1, "tokens_input": 152, "tokens_output": 52, "tokens_total": 204}} <code>
+    def factorial(n):
+        if n < 0:
+            raise ValueError("Factorial is not defined for negative numbers")
+        if n == 0 or n == 1:
+            return 1
+        return n * factorial(n - 1)
+    </code>
+
+2026-03-04 16:02:03:0073 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "fatorial_recursivo", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:02:03:0074 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "fatorial_recursivo", "passed": true, "total_attempts": 1, "elapsed_s": 3.248, "tokens_input": 152, "tokens_output": 52, "tokens_total": 204}} passed=True total_attempts=1 elapsed_s=3.248 tokens_total=204
+
+2026-03-04 16:02:03:0074 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "inverter_string"}} Função `reverse_string(s)` que retorna a string invertida.
+
+2026-03-04 16:02:04:0335 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "inverter_string", "attempt": 1, "tokens_input": 146, "tokens_output": 12, "tokens_total": 158}} <code>
+    def reverse_string(s):
+        return s[::-1]
+    </code>
+
+2026-03-04 16:02:04:0679 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "inverter_string", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:02:04:0680 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "inverter_string", "passed": true, "total_attempts": 1, "elapsed_s": 1.606, "tokens_input": 146, "tokens_output": 12, "tokens_total": 158}} passed=True total_attempts=1 elapsed_s=1.606 tokens_total=158
+
+2026-03-04 16:02:04:0680 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "palindromo"}} Função `is_palindrome(s)` que retorna True se a string for um palíndromo (ignorando maiúsculas e espaços).
+
+2026-03-04 16:02:06:0648 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "palindromo", "attempt": 1, "tokens_input": 164, "tokens_output": 29, "tokens_total": 193}} <code>
+    def is_palindrome(s):
+        s = s.lower().replace(" ", "")
+        return s == s[::-1]
+    </code>
+
+2026-03-04 16:02:07:0065 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "palindromo", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:02:07:0067 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "palindromo", "passed": true, "total_attempts": 1, "elapsed_s": 2.386, "tokens_input": 164, "tokens_output": 29, "tokens_total": 193}} passed=True total_attempts=1 elapsed_s=2.386 tokens_total=193
+
+2026-03-04 16:02:07:0067 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "dois_soma"}} Função `two_sum(nums, target)` que retorna os índices dos dois números numa lista que somam ao target.
+
+2026-03-04 16:02:09:0882 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "dois_soma", "attempt": 1, "tokens_input": 157, "tokens_output": 54, "tokens_total": 211}} <code>
+    def two_sum(nums, target):
+        seen = {}
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in seen:
+                return [seen[complement], i]
+            seen[num] = i
+        return []
+    </code>
+
+2026-03-04 16:02:10:0209 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "dois_soma", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:02:10:0211 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "dois_soma", "passed": true, "total_attempts": 1, "elapsed_s": 3.144, "tokens_input": 157, "tokens_output": 54, "tokens_total": 211}} passed=True total_attempts=1 elapsed_s=3.144 tokens_total=211
+
+2026-03-04 16:02:10:0211 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "contar_palavras"}} Função `word_count(text)` que retorna um dicionário com a frequência de cada palavra no texto (case-insensitive).
+
+2026-03-04 16:02:13:0012 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "contar_palavras", "attempt": 1, "tokens_input": 159, "tokens_output": 52, "tokens_total": 211}} <code>
+    def word_count(text):
+        text = text.lower()
+        words = text.split()
+        count = {}
+        for word in words:
+            count[word] = count.get(word, 0) + 1
+        return count
+    </code>
+
+2026-03-04 16:02:13:0329 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "contar_palavras", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:02:13:0330 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "contar_palavras", "passed": true, "total_attempts": 1, "elapsed_s": 3.119, "tokens_input": 159, "tokens_output": 52, "tokens_total": 211}} passed=True total_attempts=1 elapsed_s=3.119 tokens_total=211
+
+2026-03-04 16:02:13:0330 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "numero_primo"}} Função `is_prime(n)` que retorna True se n for um número primo.
+
+2026-03-04 16:02:17:0486 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "numero_primo", "attempt": 1, "tokens_input": 149, "tokens_output": 85, "tokens_total": 234}} <code>
+    def is_prime(n):
+        if n < 2:
+            return False
+        if n == 2:
+            return True
+        if n % 2 == 0:
+            return False
+        for i in range(3, int(n**0.5) + 1, 2):
+            if n % i == 0:
+                return False
+        return True
+    </code>
+
+2026-03-04 16:02:17:0935 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "numero_primo", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:02:17:0936 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "numero_primo", "passed": true, "total_attempts": 1, "elapsed_s": 4.606, "tokens_input": 149, "tokens_output": 85, "tokens_total": 234}} passed=True total_attempts=1 elapsed_s=4.606 tokens_total=234
+
+2026-03-04 16:02:17:0936 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "achatar_lista"}} Função `flatten(lst)` que recebe uma lista aninhada de qualquer profundidade e retorna uma lista plana.
+
+2026-03-04 16:02:20:0458 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "achatar_lista", "attempt": 1, "tokens_input": 156, "tokens_output": 45, "tokens_total": 201}} <code>
+    def flatten(lst):
+        result = []
+        for item in lst:
+            if isinstance(item, list):
+                result.extend(flatten(item))
+            else:
+                result.append(item)
+        return result
+    </code>
+
+2026-03-04 16:02:20:0861 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "achatar_lista", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:02:20:0862 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "achatar_lista", "passed": true, "total_attempts": 1, "elapsed_s": 2.925, "tokens_input": 156, "tokens_output": 45, "tokens_total": 201}} passed=True total_attempts=1 elapsed_s=2.925 tokens_total=201
+
+2026-03-04 16:02:20:0862 [TASK_START] {{"run_id": "1772640110312-38b34276", "task": "caesar_cipher"}} Função `caesar_cipher(text, shift)` que aplica a cifra de César ao texto, deslocando cada letra por `shift` posições (preserva maiúsculas/minúsculas e ignora não-letras).
+
+2026-03-04 16:02:25:0148 [GENERATION] {{"run_id": "1772640110312-38b34276", "task": "caesar_cipher", "attempt": 1, "tokens_input": 184, "tokens_output": 84, "tokens_total": 268}} <code>
+    def caesar_cipher(text, shift):
+        result = []
+        
+        for char in text:
+            if char.isalpha():
+                base = ord('A') if char.isupper() else ord('a')
+                shifted = (ord(char) - base + shift) % 26
+                result.append(chr(shifted + base))
+            else:
+                result.append(char)
+        
+        return ''.join(result)
+    </code>
+
+2026-03-04 16:02:25:0481 [TEST_RESULT] {{"run_id": "1772640110312-38b34276", "task": "caesar_cipher", "attempt": 1, "passed": true}} (no output)
+
+2026-03-04 16:02:25:0482 [TASK_END] {{"run_id": "1772640110312-38b34276", "task": "caesar_cipher", "passed": true, "total_attempts": 1, "elapsed_s": 4.62, "tokens_input": 184, "tokens_output": 84, "tokens_total": 268}} passed=True total_attempts=1 elapsed_s=4.62 tokens_total=268
+
+2026-03-04 16:02:25:0482 [RUN_END] {{"run_id": "1772640110312-38b34276", "total_tasks": 10, "passed": 10, "failed": 0, "success_rate_pct": 100.0}} Experiment finished — 10/10 tasks passed (100.0%)
+
